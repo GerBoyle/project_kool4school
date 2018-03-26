@@ -1,0 +1,58 @@
+<p id="notice"><%= notice %></p>
+
+<p> <b>Firstname:</b><%= @customer.firstname %></p>
+<p> <b>Lastname:</b><%= @customer.lastname %></p>
+<p> <b>Email:</b><%= @customer.email %></p>
+<p> <b>Phone:</b><%= @customer.phone %></p>
+
+<table>
+    <tr>
+        <th>Customer</th>
+        <th>Shippingfee</th>
+        <th>Total</th>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+    
+    <%= @orders.each do |order| %>
+    <tr>
+        <td><%= order.customer_id %></td>
+        <td><%= order.shippingFee %></td>
+        <td><%= order.total %></td>
+        <td><%= link_to 'Show', order %></td>
+        <td><%= link_to 'Edit', edit_order_path(order) %></td>
+        <td><%= link_to 'Details', order_details_path(order) %></td>
+        <td><%= link_to 'Destroy', order, :confirm => 'Areyousure?', :method => :delete %></td>
+    </tr>
+    
+    <% end %>
+    
+</table> 
+<hr>
+<table><tr>
+    
+    <th>Order</th>
+    <th>Book</th>
+    <th>Quantity</th>
+    <th></th>
+    <th></th>
+    <th></th>
+</tr>
+<% @orderitems.each do |orderdetail| %>
+<tr>
+    <td><%= orderdetail.order_id %></td>
+    <td><%= orderdetail.book_id %></td>
+    <td><%= orderdetail.quantity %></td>
+    <td><%= link_to 'Show', orderitem %></td>
+    <td><%= link_to 'Edit', edit_orderitem_path(orderitem) %></td>
+    <td><%= link_to 'Destroy', orderitem, :confirm => 'Are you sure?', :method => :delete %></td>
+</tr>
+<% end %>
+</table>
+
+<hr>
+<table>
+    <tr>
+        
+        <%= link_to 'Edit', edit_customer_path(@customer) %> | <%= link_to 'Back', customers_path %>

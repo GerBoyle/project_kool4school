@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180325172504) do
+ActiveRecord::Schema.define(version: 20180326133706) do
+
+  create_table "addresses", force: :cascade do |t|
+    t.integer "customer_id"
+    t.string "address1"
+    t.string "address2"
+    t.string "town"
+    t.string "county"
+    t.string "country"
+    t.string "string"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "books", force: :cascade do |t|
     t.string "title"
@@ -19,6 +31,31 @@ ActiveRecord::Schema.define(version: 20180325172504) do
     t.string "subject"
     t.string "publisher"
     t.decimal "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "customers", force: :cascade do |t|
+    t.string "firstname"
+    t.string "lastname"
+    t.string "email"
+    t.string "phone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "orderdetails", force: :cascade do |t|
+    t.integer "order_id"
+    t.integer "book_id"
+    t.integer "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "customer_id"
+    t.decimal "shippingFee"
+    t.decimal "total"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
