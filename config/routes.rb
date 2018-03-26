@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get 'custdetails/:id'=> 'customers#showaddress', :as => :customer_details
   get 'orderdetails/:id' => 'orders#showorderinfo', :as => :order_details 
   get 'custorders/:id' => 'customers#showorders', :as => :customer_orders
+  get 'search_books', to: 'books#search'
 end
 
 

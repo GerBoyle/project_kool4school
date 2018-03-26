@@ -39,14 +39,14 @@
     <th></th>
     <th></th>
 </tr>
-<% @orderitems.each do |orderdetail| %>
+<% @orderdetails.each do |orderdetail| %>
 <tr>
     <td><%= orderdetail.order_id %></td>
     <td><%= orderdetail.book_id %></td>
     <td><%= orderdetail.quantity %></td>
-    <td><%= link_to 'Show', orderitem %></td>
-    <td><%= link_to 'Edit', edit_orderitem_path(orderitem) %></td>
-    <td><%= link_to 'Destroy', orderitem, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Show', orderdetail %></td>
+    <td><%= link_to 'Edit', edit_orderdetail_path(orderdetail) %></td>
+    <td><%= link_to 'Destroy', orderdetail, :confirm => 'Are you sure?', :method => :delete %></td>
 </tr>
 <% end %>
 </table>

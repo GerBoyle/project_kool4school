@@ -71,4 +71,17 @@ class BooksController < ApplicationController
     def book_params
       params.require(:book).permit(:title, :description, :author, :subject, :publisher, :price)
     end
+    
+    
+     def search
+       if params[:book].present?
+          @book = Book.new_from_lookupBook(params[:book])
+          render json: @book
+          #render 'users/my_book'
+       else
+          flash[:danger] = "You have entered an empty search string"
+          redirect_to my_book_path
+       end
+    end
+    
 end
