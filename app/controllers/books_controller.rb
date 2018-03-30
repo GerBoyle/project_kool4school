@@ -1,6 +1,26 @@
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
 
+
+  def subject
+    @books = Book.where(subject: params[:id])
+    @subject = params[:id]
+  end
+  
+  def search
+    @search_term = params[:q]
+    st = "%#{params[:q]}%"
+    @books = Book.where("Title like ? or description like ?", st, st)
+    
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @books }
+    end
+  end
+
+
+
+
   # GET /books
   # GET /books.json
   def index
@@ -73,15 +93,6 @@ class BooksController < ApplicationController
     end
     
     
-     def search
-       if params[:book].present?
-          @book = Book.new_from_lookupBook(params[:book])
-          render json: @book
-          #render 'users/my_book'
-       else
-          flash[:danger] = "You have entered an empty search string"
-          redirect_to my_book_path
-       end
-    end
+
     
 end

@@ -1,0 +1,9 @@
+<% @books = Book.select('DISTINCT subject') %>
+<div class="subjectListAll">
+    <% @books.each do |c| %>
+        <a href="/subject/<%= c.subject %>" id="subjectlisting">
+            <%= c.subject %>
+        </a>
+        </br>
+    <% end %>
+</div>

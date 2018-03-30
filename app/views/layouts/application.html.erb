@@ -46,6 +46,11 @@
         <div class="col-lg-9">
           <%= bootstrap_flash %>
           <%= yield %>
+          
+            <div class="searchbox">
+                <h2 class="BoxHeaders">Search</h2>
+                <%= render :partial => 'books/search' %>
+            </div>
         </div>
 
       </div><!--/row-->

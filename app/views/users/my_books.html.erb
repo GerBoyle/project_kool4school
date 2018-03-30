@@ -1,19 +1,29 @@
 <h1>My Books</h1>
 
 
+            <div class="searchbox">
+                <h2 class="BoxHeaders">Search</h2>
+                <%= render :partial => 'books/search' %>
+            </div>
+
+
+
 <h3>Search for Book</h3>
 <div id="book-lookup">
     <%= form_tag "search_book_path", method: :get, id: "book-lookup-form" do %>
         <div class="form-group row no-padding text-center col-md-12">
-            <div class="col-md-10">
-                <%= text_field_tag :book, params[:book], placeholder: "Book Title", autofocus: true, class: "form-control search-box input-lg" %>
+
             
-            </div>
-            <div class="col-md-2">
-                <%= button_tag(type: :submit, class: "btn btn-lg btn-success") do %>
-                    <i class="fa fa-search"></i> Search for a Book
-                <% end %>
-            </div>
+                <div class="col-md-10">
+                    <%= text_field_tag :book, params[:book], placeholder: "Book Title or Description", autofocus: true, class: "form-control search-box input-lg" %>
+                
+                </div>
+                <div class="col-md-2">
+                    <%= button_tag(type: :submit, class: "btn btn-lg btn-success") do %>
+                        <i class="fa fa-search"></i> Search for a Book
+                    <% end %>
+                </div>
+            
         </div>
         
     <% end %>
@@ -23,7 +33,7 @@
 
     <% if @book %>
         <div class="well results-block"> 
-            <strong>Book Title: </strong><%= @profile["login"] %></br>
+            
          
         </div>
     <% end %>
