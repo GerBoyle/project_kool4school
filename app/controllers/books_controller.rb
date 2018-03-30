@@ -10,7 +10,7 @@ class BooksController < ApplicationController
   def search
     @search_term = params[:q]
     st = "%#{params[:q]}%"
-    @books = Book.where("Title like ? or description like ?", st, st)
+    @books = Book.where("Title like ? or description like ? or subject like ?", st, st, st)
     
     respond_to do |format|
       format.html # index.html.erb

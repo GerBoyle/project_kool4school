@@ -21,8 +21,11 @@
                 <div class="description">
                     <%= book.description %>
                 </div>
+                <div class="subject">
+                    <%= book.subject %>
+                </div>
                 <div class="price">
-                    <%= number_to_currency(book.price, :unit => "&pound;") %>
+                    <%= number_to_currency(book.price, :unit => "€") %>
                 </div>
                 <div class="links">
                     <% if session[:login] == 1 %>
@@ -36,6 +39,8 @@
         </tr>
     <% end %>
 </table>
+
+
 <% if session[:login] == 1 %>
     <p><%= link_to 'New book', new_book_path %></p>
 <% end %>
