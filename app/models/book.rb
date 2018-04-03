@@ -1,14 +1,7 @@
 class Book < ApplicationRecord
     
-    belongs_to :orderitem
-    #has_many :categories
+    belongs_to :orderdetail
+    #has_many :subjects
 
-
-    def self.new_from_lookupBook(book)
-        lookedup_path = 'https:/'
-
-    end
-    
-    
     
 end
