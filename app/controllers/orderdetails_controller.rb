@@ -28,7 +28,7 @@ class OrderdetailsController < ApplicationController
 
     respond_to do |format|
       if @orderdetail.save
-        format.html { redirect_to @orderdetail, notice: 'Orderdetail was successfully created.' }
+        format.html { redirect_to @orderdetail, notice: 'Order was successfully created.' }
         format.json { render :show, status: :created, location: @orderdetail }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class OrderdetailsController < ApplicationController
   def update
     respond_to do |format|
       if @orderdetail.update(orderdetail_params)
-        format.html { redirect_to @orderdetail, notice: 'Orderdetail was successfully updated.' }
+        format.html { redirect_to @orderdetail, notice: 'Order Detail was successfully updated.' }
         format.json { render :show, status: :ok, location: @orderdetail }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class OrderdetailsController < ApplicationController
   def destroy
     @orderdetail.destroy
     respond_to do |format|
-      format.html { redirect_to orderdetails_url, notice: 'Orderdetail was successfully destroyed.' }
+      format.html { redirect_to orderdetails_url, notice: 'Order was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -64,7 +64,7 @@ class OrderdetailsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_orderdetail
-      @orderdetail = Orderdetail.find(params[:id])
+      @orderdetail = Orderdetails.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
