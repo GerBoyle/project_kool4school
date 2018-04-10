@@ -32,7 +32,8 @@
                         <%= link_to 'Edit', edit_book_path(book) %> | 
                         <%= link_to 'Destroy', book, :confirm => "Are you sure?", :method => :delete %>
                     <% else %>
-                        <a href="/cart/<%= book.id %>">Add to Cart</a><br><br>
+                        <%= button_to "Add #{book.title} to cart", line_items_path(:book_id => book.id) %>
+                        
                     <% end %>
                 </div>
             </td>

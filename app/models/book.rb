@@ -1,7 +1,6 @@
 class Book < ApplicationRecord
     
-    belongs_to :orderdetail
-    #has_many :subjects
-
+    has_many:line_items, dependent: :destroy
+    
     
 end

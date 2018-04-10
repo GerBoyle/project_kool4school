@@ -10,6 +10,7 @@ class OrdersController < ApplicationController
   # GET /orders/1
   # GET /orders/1.json
   def show
+    @order = Order.find(params[:id])
   end
 
   # GET /orders/new
@@ -26,16 +27,16 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
 
-    respond_to do |format|
-      if @order.save
-        format.html { redirect_to @order, notice: 'Order was successfully created.' }
-        format.json { render :show, status: :created, location: @order }
-      else
-        format.html { render :new }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
-      end
-    end
+    @current_cart.line_items.each do |item|
+    @order.line_items << item
+    item.cart_id = nil
   end
+  @order.save
+  Cart.destroy(session[:cart_id])
+  session[:cart_id] = nil
+  redirect_to root_path
+  end
+end
 
   # PATCH/PUT /orders/1
   # PATCH/PUT /orders/1.json
@@ -71,4 +72,4 @@ class OrdersController < ApplicationController
     def order_params
       params.require(:order).permit(:customer_id, :shippingFee, :total)
     end
-end
+
