@@ -39,9 +39,9 @@ class BooksController < ApplicationController
   
   def create
     @book = Book.create(book_params)
-  redirect_to books_path
-
+    redirect_to books_path
   end
+
   # GET /books/1/edit
   def edit
     @product = Book.find(params[:id])

@@ -34,11 +34,14 @@
           <ul class="nav navbar-nav">
             <li><%= link_to "Books", "/books"  %></li>
             <li><%= link_to "Search for Book", "/my_books"  %></li>
-            <li><%= link_to "Customers", "/customers"  %></li>
-            <li><%= link_to "Addresses", "/addresses"  %></li>
-            <li><%= link_to "Orders", "/orders"  %></li>
-            <li><%= link_to "Order Details", "/orderdetails"  %></li>
+            <% if@false %>
+              <li><%= link_to "Customers", "/customers"  %></li>
+              <li><%= link_to "Addresses", "/addresses"  %></li>
+              <li><%= link_to "Orders", "/orders"  %></li>
+              <li><%= link_to "Order Details", "/orderdetails"  %></li>
+            <% end %>
             <li><%= link_to "Cart", "/carts/:id"  %></li>
+            <li><%= link_to "Customer Profile",  my_profile_path  %></li>
           </ul>
         </div>
       </div>

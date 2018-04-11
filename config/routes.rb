@@ -1,16 +1,18 @@
 Rails.application.routes.draw do
-  get 'carts/show'
-
+   
+post '/cart/:product_id' => 'cart#add', :as => 'add'
+ 
   resources :orderdetails
   resources :orders
   resources :addresses
   resources :customers
-  resources :books
+  resources :books   #, only: [:index]
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   
   root 'welcome#index'
-  
+   
+  get 'carts/show'
   get 'carts/:id' => "carts#show", as: "cart"
   delete 'carts/:id' => "carts#destroy"
 
@@ -22,11 +24,13 @@ Rails.application.routes.draw do
 
   get 'books_path', to: "books#index"
   get 'my_books', to:'users#my_books'
+  get 'my_profile', to: 'users#my_profile'
   get 'custdetails/:id' => 'customers#showaddress', :as => :customer_details
   get 'orderdetails/:id' => 'orders#showorderinfo', :as => :order_details 
   get 'custorders/:id' => 'customers#showorders', :as => :customer_orders
   get '/subject/:id' => 'books#subject'
   post '/search' => 'books#search'
+  
 end
 
 
