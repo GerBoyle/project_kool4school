@@ -4,15 +4,39 @@
 
 <h2>All Orders</h2>
 
-<% @orders.each do |order| %>
-  <p>Name: <%= order.name %></p>
-  <p>Email: <%= order.email %></p>
-  <p>Line Items: </p>
-  <ul>
-    <% order.line_items.each do |item| %>
-    <li><%= item.quantity %> x <%= item.product.name %></li>
-    <% end %>
-  </ul>
-<% end
+<table>
+  <thead>
+    <tr>
+      <th>Customer</th>
+      <th>Salestax</th>
+      <th>Shippingfee</th>
+      <th>Total</th>
+      <th>Methodofpayment</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
 
+  <tbody>
+
+      <% @orders.each do |order| %>
+            <tr>
+              <td><%= order.customer_id %></td>
+              <td><%= order.shippingFee %></td>
+              <td><%= order.total %></td>
+              <td><%= link_to 'Show', order %></td>
+              <td><%= link_to 'Edit', edit_order_path(order) %></td>
+              <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+        
+        <p>Line Items: </p>
+        <ul>
+          <% order.line_items.each do |item| %>
+          <li><%= item.quantity %> x <%= item.product.name %></li>
+          <% end %>
+        </ul>
+      <% end %>
+  </tbody>
+</table>
+
+<br>
 <%= link_to 'New Order', new_order_path %>
