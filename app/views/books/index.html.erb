@@ -25,6 +25,9 @@
         <td><%= book.publisher %></td>
         <td><%= book.price %></td>
         
+         
+            <td><%= link_to 'Add to Basket', add_to_basket_path(:user_id => current_user, :book_id => book) %></td>
+        
       </tr>
     <% end %>
   </tbody>

@@ -1,0 +1,21 @@
+<h1>My Basket</h1>
+<table>
+  <thead>
+  <th>Name:</th>
+  <th>Amount:</th>
+  <th>Price:</th>
+  <th>Actions:</th>
+  </thead>
+  <tbody>
+  <% @user.book.each do |book| %>
+    <tr>
+      <td><%= book.title %></td>
+      <td><%= Book.get_amount_per_user(@user.id, book.id) %></td>
+      <td><%= book.price %></td>
+      <td><%= link_to "Show", book_path(book) %></td>
+      <td><%= link_to 'Remove from basket',
+                      remove_from_basket_path(:user_id => current_user, :book_id => book), method: :delete %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

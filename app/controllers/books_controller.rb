@@ -19,8 +19,6 @@ class BooksController < ApplicationController
   end
 
 
-
-
   # GET /books
   # GET /books.json
   def index

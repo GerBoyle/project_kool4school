@@ -7,11 +7,15 @@ post '/cart/:product_id' => 'cart#add', :as => 'add'
   resources :addresses
   resources :customers
   resources :books   #, only: [:index]
-  devise_for :users
+  devise_for :users 
+  get 'my_basket' => "users#my_basket"
+  get 'add_to_basket' => "users#add_to_basket"
+  delete 'remove_from_basket' => "users#remove_from_basket"
+
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   
   root 'welcome#index'
-   
   get 'carts/show'
   get 'carts/:id' => "carts#show", as: "cart"
   delete 'carts/:id' => "carts#destroy"
