@@ -32,8 +32,7 @@
                         <%= link_to 'Edit', edit_book_path(book) %> | 
                         <%= link_to 'Destroy', book, :confirm => "Are you sure?", :method => :delete %>
                     <% else %>
-                      
-                        <%= link_to "Add #{book.title} to Basket", add_to_basket_path(:user_id => current_user, :book_id => book) %>
+                      <%= link_to "Add #{book.title} to Basket", add_to_basket_path(:user_id => current_user, :book_id => book) %>
                     <% end %>
                 </div>
             </td>
