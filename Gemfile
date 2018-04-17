@@ -13,7 +13,7 @@ gem 'devise-bootstrap-views'
 gem 'font-awesome-rails'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.5'
-
+gem 'stripe'
 group :production do
   gem 'pg'
 end
