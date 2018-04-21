@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
    
 post '/cart/:product_id' => 'cart#add', :as => 'add'
+
+   # Below are the routes added to send to the proper controller
  
   resources :orderdetails
   resources :orders
