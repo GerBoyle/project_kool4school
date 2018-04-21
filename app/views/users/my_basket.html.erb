@@ -7,6 +7,8 @@
   <th>Actions:</th>
   </thead>
   <tbody>
+  <% @totalCost = 0 %>
+  <% @totalQty = 0 %>
   <% @user.book.each do |book| %>
     <tr>
       <td><%= book.title %></td>
@@ -16,6 +18,14 @@
       <td><%= link_to 'Remove from basket',
                       remove_from_basket_path(:user_id => current_user, :book_id => book), method: :delete %></td>
     </tr>
+    <% @totalCost += book.price %>
+    <% @totalQty += Book.get_amount_per_user(@user.id, book.id) %>
   <% end %>
+    <tr>
+      <td></td>
+     <td><strong>Total Quantity : </strong><%= @totalQty %> Books</td>
+    <td><strong>Total Price : </strong><%= @totalCost %> Euro</td>
+  </tr>
   </tbody>
 </table>
+
