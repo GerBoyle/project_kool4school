@@ -8,7 +8,7 @@ GET HTTP requests as they are not secured with it.
 
 =end
 
-protect_from_forgery except :show 
+protect_from_forgery 
 
 
 =begin
