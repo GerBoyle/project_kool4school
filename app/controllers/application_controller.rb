@@ -6,10 +6,12 @@ class ApplicationController < ActionController::Base
 The above line was removed and the below line addded to prevent 
 GET HTTP requests as they are not secured with it.
 
+INCORRECT with:  :exception added back in 
+
 =end
 
-protect_from_forgery 
-
+protect_from_forgery with: :exception
+ 
 
 =begin
 Below prevents users who are not logged in from the abilty to do these actions
